@@ -1,0 +1,19 @@
+{
+  "name": "mylinks",
+  "version": "1.0.0",
+  "description": "Simple bookmarker application.",
+  "main": "./app/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bookmarker",
+    "links"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^3.0.10"
+  }
+}

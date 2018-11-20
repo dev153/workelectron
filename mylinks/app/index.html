@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bookmarker</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h1>ILOT Links</h1>
+        <div class="error-message">
+
+        </div>
+        <section class="add-new-link">
+            <form class="new-link-form">
+                <input type="url" class="new-link-url" placeholder="URL" size="100" required>
+                <input type="submit" class="new-link-submit" value="Submit" disabled>
+            </form>
+        </section>
+        <section class="links"></section>
+        <section class="controls">
+            <button class="clear-storage">Clear Storage</button>
+        </section>
+        <script>
+            require('./renderer.js');
+        </script>
+    </body>
+</html>
