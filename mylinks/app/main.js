@@ -9,7 +9,6 @@ const applicationSettings = {
 let mainWindow = null;
 
 app.on('ready', () => {
-    console.log('Hello from Electron');
     mainWindow = new BrowserWindow(applicationSettings);
     mainWindow.webContents.loadFile(__dirname+'/index.html');
 });

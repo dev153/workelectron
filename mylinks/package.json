@@ -4,7 +4,7 @@
   "description": "Simple bookmarker application.",
   "main": "./app/main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron . --enable-logging",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,7 +13,8 @@
   ],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "electron": "^3.0.10"
   }
 }
