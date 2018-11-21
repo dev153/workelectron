@@ -1,0 +1,21 @@
+.root-container {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.controls-bar {
+    height: 60px;
+}
+
+.content-area {
+    display: flex;
+    flex-grow: 1;
+    flex-flow: row;
+}
+
+.json-content {
+    flex-grow: 1;
+    height: 100%
+}
+
