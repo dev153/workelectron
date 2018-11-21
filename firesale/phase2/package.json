@@ -1,7 +1,7 @@
 {
   "name": "firesale",
   "version": "1.0.0",
-  "description": "Firesale application - PHASE-I",
+  "description": "Firesale application - PHASE-II",
   "main": "app/main.js",
   "scripts": {
     "start": "electron . --enable-logging",

@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Markdown-To-HTML - Phase-I</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Markdown-To-HTML - PHASE-II</title>
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
@@ -17,13 +16,14 @@
         <button id="show-file" disabled>Show File</button>
         <button id="open-in-default" disabled>Open in Default Application</button>
     </section>
+
     <section class="content">
         <label for="markdown" hidden>Markdown Content</label>
         <textarea class="raw-markdown" id="markdown"></textarea>
         <div class="rendered-html" id="html"></div>
     </section>
-    <script>
-        require('./renderer.js');
-    </script>
 </body>
+<script>
+        require('./renderer.js');
+</script>
 </html>
