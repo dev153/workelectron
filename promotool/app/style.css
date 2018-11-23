@@ -1,21 +1,71 @@
-.root-container {
+* {
+    padding: 0px;
+    border: 0px;
+    box-sizing: border-box;    
+}
+
+body {
     display: flex;
-    flex-flow: column;
-    height: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
 }
 
-.controls-bar {
-    height: 60px;
+.controls-menu {
+    display: flex;
+    background-color: #fe5200;
 }
 
-.content-area {
+.main {
     display: flex;
     flex-grow: 1;
     flex-flow: row;
 }
 
-.json-content {
-    flex-grow: 1;
-    height: 100%
+.message-area {
+    font-family: 'Ubuntu Mono';
+    font-weight: bold;
+    min-height: 40px;
+    padding-top: 8px;
+    padding-left: 8px;
 }
 
+.json-view {
+    border: 2px solid grey;
+    flex-grow: 1;
+    background-color: lightgray;
+    font-family: 'Ubuntu Mono';
+    font-size: 16px;
+}
+
+.promotions-view {
+    border: 2px solid grey;
+    flex-grow: 1;
+    font-family: 'Ubuntu Mono';
+    font-size: 16px;
+    padding-left: 20px;
+    /* overflow: scroll; */
+}
+
+.controls-menu > button {
+    width: 140px;
+    height: 30px;
+    background-color: whitesmoke;
+    border: none;
+    margin: 5px;
+    font-family: 'Ubuntu Mono';
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.controls-menu > button:hover {
+    background-color: lightgray;
+}
+
+button:active {
+    background-color: #98AFC7;
+}
+
+button:disabled {
+    background-color: darkgray;
+}

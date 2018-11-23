@@ -1,4 +1,5 @@
-const {app,BrowserWindow} = require('electron');
+const {app,dialog,BrowserWindow} = require('electron');
+const fs = require('fs');
 
 const applicationWindowSettings = { 
     title: 'Intralot Promtion Tool',
@@ -10,6 +11,8 @@ const applicationWindowSettings = {
 console.log('PROMOTION TOOL');
 
 let applicationWindow = null;
+let promotionsJsonContent = null;
+let promotionsMap = new Map();
 
 //=============================================================================
 // FUNCTIONS
@@ -18,6 +21,41 @@ let applicationWindow = null;
 const logEvent = (eventName) => {
     console.log(`[${eventName}] event`);
 };
+
+const getFileFromUser = exports.getFileFromUser = () => {
+    files = dialog.showOpenDialog({
+        properties: ['openfile'],
+        filters:[
+            { name: "Json Files", extensions: ['json','js'] }
+        ]
+    });
+
+    if ( files ) {
+        console.log(files[0]);
+        openFile(files[0]);
+    }
+}
+
+const openFile = exports.openFile = (file) => {
+    const content = fs.readFileSync(file).toString();
+    var result = validateContent(content);
+    if ( result === true ) {
+        promotionsJsonContent = JSON.parse(content);
+    }
+    applicationWindow.webContents.send('file-opened',result,content);
+}
+
+const validateContent = exports.validateContent = (content) => {
+    var result = true;
+    try {
+        promotionsJsonContent = JSON.parse(content);
+    } catch ( error ) {
+        promotionsJsonContent = null;
+        result = false;
+    }
+    console.log(`validateContent result=${result}`);
+    return result;
+}
 
 //=============================================================================
 // EVENT LISTENERS
@@ -42,7 +80,4 @@ app.on('ready', () => {
     logEvent('ready');
     createApplicationWindow();
 });
-
-
-
 

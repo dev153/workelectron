@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css" type="text/css">
+    <!-- jQuery for accordion effect. -->
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
     <title>Intralot Promotion Tool</title>
 </head>
 <body>
-    <div class="root-container" >
-        <div class="controls-bar">
-            <button>TEST</button>
-        </div>
-        <div class="content-area" >
-            <textarea class="json-content"></textarea>
-        </div>
+    <div class="controls-menu">
+        <button class="open-file">Open File</button>
+        <button class="parse-attributes" disabled>Parse</button>
     </div>
+    <div class="main">
+        <textarea class="json-view"></textarea>
+        <div class="promotions-view"></div>
+    </div>
+    <div class="message-area"></div>
 </body>
 <script>
     require('./renderer.js');
