@@ -12,7 +12,7 @@ console.log('PROMOTION TOOL');
 
 let applicationWindow = null;
 let promotionsJsonContent = null;
-let promotionsMap = new Map();
+// let promotionsMap = new Map();
 
 //=============================================================================
 // FUNCTIONS
@@ -24,7 +24,7 @@ const logEvent = (eventName) => {
 
 const getFileFromUser = exports.getFileFromUser = () => {
     files = dialog.showOpenDialog({
-        properties: ['openfile'],
+        properties: ['openFile'],
         filters:[
             { name: "Json Files", extensions: ['json','js'] }
         ]
@@ -80,4 +80,3 @@ app.on('ready', () => {
     logEvent('ready');
     createApplicationWindow();
 });
-

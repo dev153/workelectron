@@ -13,6 +13,21 @@ const promotionsView = document.querySelector('.promotions-view');
 
 const messageArea = document.querySelector('.message-area');
 
+var promotionParseResult = { 
+    error: "", 
+    promotionsMap: new Map()
+};
+
+promotionsView.addEventListener('click', (event) => {
+    if ( event.target.tagName == "LI" ) {
+        var promotionId = parseInt(event.target.id);
+        var promotionObj = promotionParseResult.promotionsMap.get(promotionId);
+        if ( typeof(promotionObj === 'Promotion') ) {
+            console.log(promotionObj.toString());
+        }
+    }
+});
+
 openFileButton.addEventListener('click',() => {
     console.log('"Open File" button pressed');
     mainProcess.getFileFromUser();
@@ -21,9 +36,9 @@ openFileButton.addEventListener('click',() => {
 parseAttributesButton.addEventListener('click', () => {
     console.log('"Parse" button pressed');
     const promotionsList = JSON.parse(jsonView.value);
-    const result = promotionParser.parsePromotionsList(promotionsList);
-    if ( result.error === "" ) {
-        var promotionsViewContent = createPromotionsViewContent(result.promotionsMap);
+    promotionParseResult = promotionParser.parsePromotionsList(promotionsList);
+    if ( promotionParseResult.error === "" ) {
+        var promotionsViewContent = createPromotionsViewContent(promotionParseResult.promotionsMap);
         setPromotionViewContent(promotionsViewContent);
     } else {
         showErrorMessage(result.error);
@@ -50,7 +65,6 @@ ipcRenderer.on('promotions-parsed',(event, error, content) => {
 });
 
 showErrorMessage = (message) => {
-    console.log(message);
     messageArea.innerHTML = message;
 }
 
@@ -67,7 +81,7 @@ const createPromotionsViewContent = (promotionsMap) => {
     var str = "";
     str += "<ul>";
     for (var [key, value] of promotionsMap) {
-        str += `<li>Promotion id ${key}</li>`;
+        str += `<li id="${key}">Promotion id ${key}</li>`;
     }
     str += "</ul>";
     console.log(str);
