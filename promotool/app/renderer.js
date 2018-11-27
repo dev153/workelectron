@@ -9,7 +9,8 @@ const parseAttributesButton = document.querySelector('.parse-attributes');
 
 
 const jsonView = document.querySelector('.json-view');
-const promotionsView = document.querySelector('.promotions-view');
+const promotionsViewTable = document.querySelector('.promotions-view-table');
+const promotionViewer = document.querySelector('.promotion-viewer');
 
 const messageArea = document.querySelector('.message-area');
 
@@ -18,12 +19,12 @@ var promotionParseResult = {
     promotionsMap: new Map()
 };
 
-promotionsView.addEventListener('click', (event) => {
+promotionsViewTable.addEventListener('click', (event) => {
     if ( event.target.tagName == "LI" ) {
         var promotionId = parseInt(event.target.id);
         var promotionObj = promotionParseResult.promotionsMap.get(promotionId);
         if ( typeof(promotionObj === 'Promotion') ) {
-            console.log(promotionObj.toString());
+            promotionViewer.innerHTML = promotionObj.toString();
         }
     }
 });
@@ -69,7 +70,7 @@ showErrorMessage = (message) => {
 }
 
 setPromotionViewContent = (content) => {
-    promotionsView.innerHTML = content;
+    promotionsViewTable.innerHTML = content;
 }
 
 //=============================================================================

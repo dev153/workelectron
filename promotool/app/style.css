@@ -45,9 +45,12 @@ body {
     flex-grow: 1;
     font-family: 'Ubuntu Mono';
     font-size: 16px;
-    padding-left: 20px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
     min-width: 50%;
     max-width: 50%;
+    display: flex;
+    flex-flow: column;
 }
 
 .controls-menu > button {
@@ -71,4 +74,34 @@ button:active {
 
 button:disabled {
     background-color: darkgray;
+}
+
+.promotions-view-table {
+    border: 1px solid black;
+    flex-grow: 1;
+    min-height: 50%;
+    max-height: 50%;
+    overflow: scroll;
+}
+
+.promotion-viewer {
+    border: 1px solid black;
+    flex-grow: 1;
+    min-height: 50%;
+    max-height: 50%;
+    overflow: scroll;
+    padding: 4px;
+}
+
+.promotions-view-table > ul {
+    list-style-type: none;
+}
+
+.promotions-view-table > ul > li {
+    padding: 4px;
+    border: 1px solid lightgray;
+}
+
+.promotions-view-table > ul > li:hover {
+    background-color: lightgray;
 }

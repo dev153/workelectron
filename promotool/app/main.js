@@ -2,7 +2,7 @@ const {app,dialog,BrowserWindow} = require('electron');
 const fs = require('fs');
 
 const applicationWindowSettings = { 
-    title: 'Intralot Promtion Tool',
+    title: 'Intralot Promotion Tool',
     width: 1024, 
     height: 768, 
     show: false 
