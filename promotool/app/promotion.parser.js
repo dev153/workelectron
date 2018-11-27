@@ -1,3 +1,5 @@
+var sprintf = require("sprintf-js").sprintf
+
 const fooBar = exports.fooBar = () => {
     console.log("foobar");
 }
@@ -11,10 +13,30 @@ class Promotion {
         this.id = id;
         this.version = version;
         this.attributes = attributes;
+        this.logos = [];
+        // search promotion information for logos.
+        this.findLogosInformation();
+    }
+
+    findLogosInformation() {
+        if ( typeof(this.attributes) !== "undefined" && this.attributes.length > 0 ) {
+            for ( var i = 0; i < this.attributes.length; i++ ) {
+                var attribute = this.attributes[i];
+                if ( typeof(attribute === 'PromotionAttribute' ) ) {
+                    
+                    var type = attribute.getType();
+                    var index = attribute.getIndex();
+                    if ( ( type === 4 || type === 5 ) && index !== 0 ) {
+                        this.logos.push(sprintf("MSG_LOGO_%010d_%010d.bmp",this.id,index));
+                    }
+                }
+            }
+        }
     }
 
     toString() {
         var str = `id=${this.id}, version=${this.version}`;
+        // Attributes
         if ( this.attributes.length > 0 ) {
             str += `, attributes=[${this.attributes[0].toString()}`;
             for ( var i = 1; i < this.attributes.length; ++i ) {
@@ -23,6 +45,16 @@ class Promotion {
             str += "]";
         } else {
             str += ', attributes=[]';
+        }
+        // Logos
+        if ( this.logos.length > 0 ) {
+            str += `, logos=[${this.logos[0]}`;
+            for ( var i = 1; i < this.logos.length; ++i ) {
+                str += `,${this.logos[i]}`;
+            }
+            str += "]";
+        } else {
+            str += ', logos=[]';
         }
         return str;
     }
@@ -38,6 +70,14 @@ class PromotionAttribute {
         this.data = data;
         this.index = index;
         this.parameters = parameters;
+    }
+
+    getType() {
+        return this.type;
+    }
+
+    getIndex() {
+        return this.index;
     }
 
     toString() {
